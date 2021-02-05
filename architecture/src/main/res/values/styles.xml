@@ -1,0 +1,12 @@
+<resources>
+    <style name="full_screen_dialog" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowEnterAnimation">@anim/enter_alpha</item>
+        <item name="android:windowExitAnimation">@anim/exit_alpha</item>
+    </style>
+</resources>

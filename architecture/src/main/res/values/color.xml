@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="half_transparent">#50000000</color>
+    <color name="loadding_bg">#cc000000</color>
+    <color name="mask_bg">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="holo_blue_light">@android:color/holo_blue_light</color>
+    <color name="holo_red_light">@android:color/holo_red_light</color>
+    <color name="holo_green_light">@android:color/holo_green_light</color>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/loadding_bg" />
+    <corners
+        android:bottomLeftRadius="@dimen/loadding_view_radius"
+        android:bottomRightRadius="@dimen/loadding_view_radius"
+        android:topLeftRadius="@dimen/loadding_view_radius"
+        android:topRightRadius="@dimen/loadding_view_radius" />
+</shape>

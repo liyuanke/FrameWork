@@ -1,0 +1,89 @@
+/*
+ * Copyright 2018-present KunMinX
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.kunminx.puremusic;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+
+import com.kunminx.architecture.BaseApplication;
+import com.kunminx.architecture.utils.Utils;
+import com.kunminx.architecture.utils.ToastUtils;
+
+/**
+ * TODO tip 1：需要为项目准备一个 Application 来继承 BaseApplication，
+ * 以便在 Activity/Fragment 中享用 Application 级作用域的 Callback-ViewModel
+ * <p>
+ * callback-ViewModel 的职责仅限于在 "跨页面通信" 的场景下，承担 "唯一可信源"，
+ * 所有跨页面的 "状态同步请求" 都交由该可信源在内部决策和处理，并统一分发给所有订阅者页面。
+ * <p>
+ * 如果这样说还不理解的话，详见《LiveData 鲜为人知的 身世背景 和 独特使命》中结合实际场合 对"唯一可信源"本质的解析。
+ * https://xiaozhuanlan.com/topic/0168753249
+ * <p>
+ * Create by KunMinX at 19/10/29
+ */
+public class App extends BaseApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initFrameWorkConfig();
+        initOtherConfig();
+    }
+
+    private void initFrameWorkConfig() {
+        Utils.init(this);
+        ToastUtils.setBgResource(R.drawable.toast_bg);
+        ToastUtils.setMessageColor(Color.WHITE);
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                AppManager.getAppManager().addActivity(activity);
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                AppManager.getAppManager().removeActivity(activity);
+            }
+        });
+    }
+
+    private void initOtherConfig() {
+
+    }
+
+}

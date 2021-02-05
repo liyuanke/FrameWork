@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.kunminx.architecture.ui.state.item_view_model.ItemModel" />
+        <variable
+            name="data"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@{data}"
+            android:id="@+id/tv_title"
+            onClickCommand="@{vm.bindingCommand}"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+    </RelativeLayout>
+</layout>
